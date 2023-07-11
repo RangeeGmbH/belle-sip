@@ -550,6 +550,9 @@ checked_marshal(belle_sip_object_vptr_t *vptr, belle_sip_object_t *obj, char *bu
 }
 
 belle_sip_error_code belle_sip_object_marshal(belle_sip_object_t *obj, char *buff, size_t buff_size, size_t *offset) {
+    if (obj == NULL) {
+        return BELLE_SIP_NOT_IMPLEMENTED; /*no implementation found*/
+    }
 	belle_sip_object_vptr_t *vptr = obj->vptr;
 	while (vptr != NULL) {
 		if (vptr->marshal != NULL) {
